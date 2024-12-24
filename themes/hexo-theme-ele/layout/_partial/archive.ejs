@@ -1,0 +1,42 @@
+<% let isTopicCard = is_category() || is_tag(); %>
+<div class="<%- isTopicCard ? 'page--topic-card' : '' %> page--archive">
+  <div class="<%- isTopicCard ? 'topic-card' : '' %> container">
+    <% if(isTopicCard){ %>
+      <div class="topic-card__title">
+        <% if(is_category()){ %>
+          <div class="archive-title">
+            <!-- <i class="fas fa-barcode"></i> -->
+            <%= page.category %>
+          </div>
+        <% } else if(is_tag()){ %>
+          <div class="archive-title">
+            <!-- <i class="fas fa-tags"></i> -->
+            <%= page.tag %>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+    <div class="<%- isTopicCard ? 'topic-card__content' : '' %> archive-list">
+      <% let last; %>
+      <% page.posts.each(function(post, i){ %>
+        <% let year = post.date.year(); %>
+        <% if (last != year && is_archive()){ %>
+          <% last = year; %>
+            <div class="archive-title">
+              <a href="<%- url_for('archives/' + year) %>" class="archive-title"><%= year %></a>
+            </div>
+        <% } %>
+        <div class="archive-item archive-type-<%= post.layout %>">
+          <div class="archive-item__date">
+            <%= isTopicCard ? post.date.format('YYYY年MM月DD日') : post.date.format('MM月DD日')  %>
+          </div>
+          <div class="archive-item__title"><a href="<%- url_for(post.path) %>"><%= post.title %></a></div>
+        </div>
+      <% }) %>
+
+      <% if (page.total > 1){ %>
+        <%- partial('pagination') %>
+      <% } %>
+    </div>
+  </div>
+</div>

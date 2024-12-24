@@ -1,0 +1,25 @@
+<div class="page--article">
+  <% if(toc(post.content)){ %>
+    <div class="toc-container">
+      <%- toc(post.content) %>
+      <div class="toc-tip">Table of Contents</div>
+    </div>
+  <% } %>
+
+
+  <div class="container">
+    <article>
+      <h1 class="page--article--title"><%= post.title %></h1>
+      <% if(page.type !== 'categories'){ %>
+        <div class="page--article--date-info">
+          写于 <%= post.date.format('YYYY.MM.DD') %>
+          最后更新 <%= post.updated.format('YYYY.MM.DD') %>
+        </div>
+      <% } %>
+      <%- page.content %>
+  </article>
+    <% if(page.type === 'categories'){ %>
+      <%- list_categories() %>
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+@import '~normalize.css/normalize.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~highlight.js/styles/atom-one-light.css';
+/**
+ * 1. set border-box as default box-sizing
+ * 2. remove the gray background color from tab, default value is inherit
+**/
+html{
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 10px;
+  color: #24292e;
+}
+*, *::before, *::after{
+  box-sizing: inherit;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  padding-top: env(safe-area-inset-top); //为导航栏+状态栏的高度 88px
+  padding-left: env(safe-area-inset-left); //如果未竖屏时为0
+  padding-right: env(safe-area-inset-right); //如果未竖屏时为0
+  padding-bottom: env(safe-area-inset-bottom); //为底下圆弧的高度 34px
+}
+
+ul, ol{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+// Remove inner padding and border in Firefox 4+.
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+// webkit focus outline
+input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+
+// Android 下 input focus 消除高亮外框
+textarea,
+input {
+  // -webkit-appearance: textfield; // 1
+  -moz-user-modify: read-write-plaintext-only;
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  td, th{
+    padding: 0;
+  }
+}
+
+/**
+* custom style
+*/
+a{
+  color:#0366d6;
+}
+
+img{
+  max-width: 100%;
+}
+
+input{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 8px 0 10px;
+  border: 1px solid #e3e3e3;
+  outline: none;
+  border-radius: 4px;
+  transition: all 0.25s;
+  &:focus{
+    border-color: #56b7fc;
+  }
+}
+
+
+
+/**
+* utils
+*/
+b, strong, .bold{
+  font-weight: 600 !important;
+}
+.container{
+  max-width: 815px;
+  margin: auto;
+}
+
+@media screen and (max-width: 830px) {
+  .container{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}

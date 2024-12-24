@@ -1,0 +1,6 @@
+<% var left = '<%=' %>
+<% var right = '%' %>
+<% var right2 = '>' %>
+
+<% for (index in htmlWebpackPlugin.files.css) { %><link rel="stylesheet" href="<%= left %>config.root<%= right %><%= right2 %><%= htmlWebpackPlugin.files.css[index].path %>"><% } %>
+

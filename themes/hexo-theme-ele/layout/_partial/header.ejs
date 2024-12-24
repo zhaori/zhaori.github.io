@@ -1,0 +1,21 @@
+<header class="main-header">
+  <div class="container">
+    <a href="/"" class="logo">
+      <img src="<%= theme.logo %>" alt="<%= theme.title %>" class="logo-img">
+    </a>
+    <span class="nav-separator"></span>
+    <%- search_form({ class: 'search-form', text: '搜索文章' }) %>
+    <a href="javascript:void(0);" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <% for(let i in theme.menu){ %>
+          <li class="nav-link <% if(is_current(theme.menu[i])){ %>active<% } %>">
+            <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</header>
